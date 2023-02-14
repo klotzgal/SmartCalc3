@@ -20,6 +20,8 @@ Implementation of SmartCalc v3.0 in Python.
 
 ## Chapter I
 
+![SmartCalc_V3.0.jpg](misc/images/SmartCalc_V3.0.jpg)
+
 Thomas was standing outside the painfully familiar club, which now looked completely abandoned. Seb hasn't been seen in months and that's probably why. \
 When Thomas received a text message with no name but a familiar address, at first he thought it was Sebastian and jumped on the first flight to California. And even now he hopes that it is Seb who will show up at the time given in the message. However, the hopes began to fade.
 
