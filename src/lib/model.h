@@ -96,13 +96,12 @@ class Model {
 #ifdef __cplusplus
 extern "C" {
 Model *model_new() { return new Model(); }
-
 void model_del(Model *m) { delete m; }
 void set_string(Model *m, char *str) { m->setStr(str); }
-double calc(Model *m) {
-  m->S21Calc();
-  return m->getData();
-}
+void set_x(Model *m, double x) { m->setX(x); }
+const char *calc(Model *m);
+void plot(Model *m, bool autoscale, double limit) { m->Plot(autoscale, limit); }
+Model::Graphic get_plot(Model *m) { return m->getPlot(); }
 }
 #endif
 
