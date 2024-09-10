@@ -495,4 +495,15 @@ void Model::Plot(bool autoscale, double limit) {
   }
 }
 
+const char *calc(Model *m) {
+  std::string s;
+  try {
+    m->S21Calc();
+    s = std::to_string(m->getData());
+  } catch (const std::exception &e) {
+    s = "Error";
+  }
+  return s.c_str();
+}
+
 }  // namespace s21
