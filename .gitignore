@@ -52,5 +52,10 @@ dkms.conf
 
 
 # My
-__*cache*__
+*venv
 .vscode
+*cache*
+build
+dist
+.coverage
+*.log

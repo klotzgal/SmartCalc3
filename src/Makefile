@@ -1,8 +1,7 @@
 .PHONY: all install uninstall clean fclean dvi dist tests format check lib_cpp
-PYTHON=python3.11
+PYTHON=python3.12
 VENV=.venv
 PYEXEC=poetry run
-OBJ_DIR=obj
 # CPP
 OS:=$(shell uname -s)
 CC=gcc
@@ -11,9 +10,11 @@ OBJ_DIR=lib/obj
 
 ifeq ($(OS), Darwin)
 	FLAGS_PLATFORM =-lgtest 
-else
+else ifeq ($(OS), Linux)
 	FLAGS_PLATFORM =-lgtest -lrt -lm -lpthread 
 endif
+
+all: install
 
 clean :
 	rm -rf main $(OBJ_DIR)/*.o $(OBJ_DIR)/*.so
@@ -31,9 +32,9 @@ main.o: main.cc
 	$(CC) -c $^ -o $(OBJ_DIR)/$@ $(FLAGS) $(FLAGS_PLATFORM) 
 
 
-# install:
-# # TODO: Заменить на установку проекта в каталог ../build
-# 	$(PYEXEC) python view.py
+install:
+# TODO: Заменить на установку проекта в каталог ../build
+	$(PYEXEC) python mainwindow.py
 
 # uninstall:
 # # TODO: Заменить на удаление проекта
