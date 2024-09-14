@@ -17,7 +17,7 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app = QApplication(sys.argv)
     widget = MainWindow()
     widget.show()

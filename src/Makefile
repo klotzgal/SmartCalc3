@@ -1,71 +1,57 @@
-.PHONY: all install uninstall clean fclean dvi dist tests format check lib_cpp
+.PHONY: all install uninstall clean dvi dist tests format check build
 PYTHON=python3.12
 VENV=.venv
 PYEXEC=poetry run
-# CPP
 OS:=$(shell uname -s)
-CC=gcc
+CC=g++
 FLAGS:=-lstdc++ -std=c++17 -Wall -Wextra -Werror -g
-OBJ_DIR=lib/obj
+OBJ_DIR=build/obj
 
 ifeq ($(OS), Darwin)
 	FLAGS_PLATFORM =-lgtest 
 else ifeq ($(OS), Linux)
-	FLAGS_PLATFORM =-lgtest -lrt -lm -lpthread 
+	FLAGS_PLATFORM =-lgtest -lrt -lm -lpthread
 endif
 
-all: install
+all: run
 
-clean :
-	rm -rf main $(OBJ_DIR)/*.o $(OBJ_DIR)/*.so
+clean:
+	rm -rf main test build
 
-lib_cpp:
-	g++ -c -fPIC lib/model.cc -Wextra -Wall -o $(OBJ_DIR)/model.o 
-	g++ -shared -Wl,-soname,model.so -o $(OBJ_DIR)/model.so $(OBJ_DIR)/model.o 
+build:
+ifeq ("", "$(wildcard build/obj/)")
+	mkdir -p build/obj/
+endif
+ifeq ("", "$(wildcard .venv/)")
+	make venv
+endif
+	$(CC) -c -fPIC lib/model.cc -Wextra -Wall -o $(OBJ_DIR)/model.o
+	$(CC) -shared -Wl,-soname,model.so -o $(OBJ_DIR)/model.so $(OBJ_DIR)/model.o 
 
-# TODO: Убрать это говно
-main: main.o lib_cpp
-	$(CC) $(OBJ_DIR)/main.o $(OBJ_DIR)/model.so -o main $(FLAGS) $(FLAGS_PLATFORM)
-	
-# TODO: Убрать это говно
-main.o: main.cc 
-	$(CC) -c $^ -o $(OBJ_DIR)/$@ $(FLAGS) $(FLAGS_PLATFORM) 
+install: build
+	$(PYEXEC) pyinstaller --onefile --windowed mainwindow.py
+	./dist/mainwindow
 
+uninstall:
+	rm -r dist
 
-install:
-# TODO: Заменить на установку проекта в каталог ../build
-	$(PYEXEC) python mainwindow.py
+dvi:
+# TODO: Добавить документацию
+	open README.md
 
-# uninstall:
-# # TODO: Заменить на удаление проекта
-# 	echo "Uninstalling..."
+dist:
+	tar -czf dist.tar.gz dist
 
-# clean:
-# 	rm -rf build *cache* .*cache dist .coverage htmlcov
+format:
+	$(PYEXEC) isort .
+	$(PYEXEC) ruff format .
 
-# fclean: clean
-# 	rm -rf $(VENV)
+check:
+	$(PYEXEC) ruff check
 
-# dvi:
-# # TODO: Добавить документацию
-# 	open README.md
-
-# dist:
-# # TODO: Проверить после добавления install
-# 	mkdir -p dist
-# 	cp -r build/* dist
-# 	tar -czf dist.tar.gz dist
-
-# format:
-# 	$(PYEXEC) isort .
-# 	$(PYEXEC) ruff format .
-
-# check:
-# 	$(PYEXEC) ruff check
-# 	# $(PYEXEC) mypy view.py # --strict  --exclude ui/ui_form.py --exclude ui/form_ui.py
-
-# tests:
-# 	$(PYEXEC) pytest #-W ignore::DeprecationWarning
+tests: build
+	$(CC) tests/test.cc -Wl,-rpath,$(OBJ_DIR) $(OBJ_DIR)/model.so -o dist/test $(FLAGS_PLATFORM) $(FLAGS)
+	./dist/test
 
 # cov:
 # 	$(PYEXEC) pytest --cov --cov-report=html #-W ignore::DeprecationWarning
@@ -76,3 +62,6 @@ venv:
 	poetry env use $(PYTHON)
 	poetry config --local virtualenvs.in-project true
 	poetry install
+
+run:
+	$(PYEXEC) python mainwindow.py

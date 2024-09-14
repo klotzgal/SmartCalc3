@@ -495,6 +495,11 @@ void Model::Plot(bool autoscale, double limit) {
   }
 }
 
+//? Функции для привязки к Python
+Model *model_new() { return new Model(); }
+void model_del(Model *m) { delete m; }
+void set_string(Model *m, char *str) { m->setStr(str); }
+void set_x(Model *m, double x) { m->setX(x); }
 const char *calc(Model *m) {
   std::string s;
   try {
@@ -505,5 +510,11 @@ const char *calc(Model *m) {
   }
   return s.c_str();
 }
+void plot(Model *m, bool autoscale, double limit) { m->Plot(autoscale, limit); }
+Model::Graphic get_plot(Model *m) { return m->getPlot(); }
+double get_pxi(Model *m, int i) { return m->getPx()[i]; }
+double get_pyi(Model *m, int i) { return m->getPy()[i]; }
+int len_px(Model *m) { return m->getPx().size(); }
+int len_py(Model *m) { return m->getPy().size(); }
 
 }  // namespace s21
