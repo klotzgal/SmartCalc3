@@ -3,17 +3,19 @@ import pathlib
 
 
 class Graphic(ctypes.Structure):
-    _fields_ = [('xMin', ctypes.c_double),
-                ('xMax', ctypes.c_double),
-                ('yMin', ctypes.c_double),
-                ('yMax', ctypes.c_double),]
+    _fields_ = [
+        ('xMin', ctypes.c_double),
+        ('xMax', ctypes.c_double),
+        ('yMin', ctypes.c_double),
+        ('yMax', ctypes.c_double),
+    ]
 
     def __repr__(self) -> str:
         return f'xMin={self.xMin}, xMax={self.xMax}, yMin={self.yMin}, yMax={self.yMax}'
 
 
 def import_cpp() -> ctypes.CDLL:
-    libname = pathlib.Path().absolute() / './lib/obj/model.so'
+    libname = pathlib.Path().absolute() / './build/obj/model.so'
     lib = ctypes.CDLL(libname)
 
     lib.model_new.restype = ctypes.c_void_p
@@ -52,7 +54,7 @@ class Model:
         lib.model_del(self._model)
 
     def calc(self) -> str:
-        print("|", self._expression, "|= ", end='')
+        print('|', self._expression, '|= ', end='')
         lib.set_x(self._model, self._x)
         lib.set_string(self._model, self._expression.encode())
         res: str = lib.calc(self._model).decode('utf-8')

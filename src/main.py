@@ -1,4 +1,4 @@
-from model import Model, Graphic
+from model import Graphic, Model
 
 if __name__ == '__main__':
     m = Model()

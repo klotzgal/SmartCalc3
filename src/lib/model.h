@@ -93,21 +93,20 @@ class Model {
                        std::stack<Operator> &stack_c);
 };
 
-#ifdef __cplusplus
+//? Функции для привязки к Python
 extern "C" {
-Model *model_new() { return new Model(); }
-void model_del(Model *m) { delete m; }
-void set_string(Model *m, char *str) { m->setStr(str); }
-void set_x(Model *m, double x) { m->setX(x); }
+Model *model_new();
+void model_del(Model *m);
+void set_string(Model *m, char *str);
+void set_x(Model *m, double x);
 const char *calc(Model *m);
-void plot(Model *m, bool autoscale, double limit) { m->Plot(autoscale, limit); }
-Model::Graphic get_plot(Model *m) { return m->getPlot(); }
-double get_pxi(Model *m, int i) { return m->getPx()[i]; }
-double get_pyi(Model *m, int i) { return m->getPy()[i]; }
-int len_px(Model *m) { return m->getPx().size(); }
-int len_py(Model *m) { return m->getPy().size(); }
+void plot(Model *m, bool autoscale, double limit);
+Model::Graphic get_plot(Model *m);
+double get_pxi(Model *m, int i);
+double get_pyi(Model *m, int i);
+int len_px(Model *m);
+int len_py(Model *m);
 }
-#endif
 
 }  // namespace s21
 

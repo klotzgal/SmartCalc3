@@ -59,3 +59,4 @@ build
 dist
 .coverage
 *.log
+test
