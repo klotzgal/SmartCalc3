@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>View</class>
+ <widget class="QMainWindow" name="View">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -29,30 +29,30 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>View</string>
   </property>
   <property name="styleSheet">
    <string notr="true">* {
-	background-color: #2e2e2e;
-	color: #ffffff;
+	background-color: #1c1c1e; /* Темно-серый, ближе к черному */
+	color: #e5e5e5; /* Светло-серый для текста */
 	font-family: 'Open Sans';
 }
 
 QPushButton {
-	background-color: #bf3b3b;
+	background-color: #445566; /* Глубокий сине-серый */
     border-style: outset;
     border-width: 2px;
     border-radius: 10px;
-    border-color: #d4d4d4;
+    border-color: #708090; /* Стальной серый */
     font: bold 14px;
     padding: 6px;
 }
 QPushButton:hover {
-	background-color: #d45c5c;
+	background-color: #567890; /* Насыщенный синий при наведении */
     border-style: inset;
 }
 QPushButton:pressed {
-	background-color: #8a2828;
+	background-color: #2a3b4c; /* Более темный синий при нажатии */
     border-style: inset;
 }
 
@@ -60,46 +60,31 @@ QLineEdit{
 	border-style: outset;
     border-width: 2px;
     border-radius: 10px;
-    border-color: #d4d4d4;
+    border-color: #708090; /* Стальной серый */
     font: bold 14px;
     padding: 6px;
 }
 
-
 #button_0, #button_1, #button_2, #button_3, #button_4, 
 #button_5, #button_6, #button_7, #button_8, #button_9 {
-    background-color: #8f0d23;
+    background-color: #556b2f; /* Темно-оливковый зеленый */
     border-style: outset;
     border-width: 2px;
     border-radius: 10px;
-    border-color: beige;
+    border-color: #dcdcdc; /* Светло-серый */
     font: bold 14px;
     padding: 6px;
 }
 
 #button_0:hover, #button_1:hover, #button_2:hover, #button_3:hover, #button_4:hover, #button_5:hover, #button_6:hover, #button_7:hover, #button_8:hover, #button_9:hover {
-    background-color: #99182e;
+    background-color: #6b8e23; /* Более яркий оливковый зеленый при наведении */
     border-style: inset;
 }
 
 #button_0:pressed, #button_1:pressed, #button_2:pressed, #button_3:pressed, #button_4:pressed, #button_5:pressed, #button_6:pressed, #button_7:pressed, #button_8:pressed, #button_9:pressed {
-    background-color: #3b050e;
+    background-color: #3b4b1e; /* Темно-зеленый при нажатии */
     border-style: inset;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -160,13 +145,13 @@ QLineEdit{
          </property>
          <property name="minimumSize">
           <size>
-           <width>120</width>
+           <width>123</width>
            <height>60</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>120</width>
+           <width>123</width>
            <height>60</height>
           </size>
          </property>
@@ -204,6 +189,9 @@ QLineEdit{
          <property name="text">
           <string>log</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="0" column="6">
@@ -232,6 +220,9 @@ QLineEdit{
          <property name="text">
           <string>1</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="1" column="3">
@@ -260,6 +251,9 @@ QLineEdit{
          <property name="text">
           <string>asin</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="0" column="7">
@@ -288,6 +282,9 @@ QLineEdit{
          <property name="text">
           <string>2</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="2" column="12">
@@ -316,6 +313,9 @@ QLineEdit{
          <property name="text">
           <string>)</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="1" column="5">
@@ -344,6 +344,9 @@ QLineEdit{
          <property name="text">
           <string>atan</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="1" column="8">
@@ -372,6 +375,9 @@ QLineEdit{
          <property name="text">
           <string>6</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="0" column="10">
@@ -400,6 +406,9 @@ QLineEdit{
          <property name="text">
           <string>+</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="1" column="6">
@@ -428,6 +437,9 @@ QLineEdit{
          <property name="text">
           <string>4</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="1" column="12">
@@ -484,6 +496,9 @@ QLineEdit{
          <property name="text">
           <string>*</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="3" column="6">
@@ -512,6 +527,9 @@ QLineEdit{
          <property name="text">
           <string>00</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="0" column="8">
@@ -540,6 +558,9 @@ QLineEdit{
          <property name="text">
           <string>3</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="3" column="10">
@@ -568,6 +589,9 @@ QLineEdit{
          <property name="text">
           <string>/</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="3" column="7">
@@ -596,6 +620,9 @@ QLineEdit{
          <property name="text">
           <string>0</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="3" column="12">
@@ -624,6 +651,9 @@ QLineEdit{
          <property name="text">
           <string>^</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="2" column="4">
@@ -652,6 +682,9 @@ QLineEdit{
          <property name="text">
           <string>ln</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="0" column="3">
@@ -680,6 +713,9 @@ QLineEdit{
          <property name="text">
           <string>sin</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="2" column="8">
@@ -708,6 +744,9 @@ QLineEdit{
          <property name="text">
           <string>9</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="2" column="11">
@@ -736,6 +775,9 @@ QLineEdit{
          <property name="text">
           <string>(</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="2" column="7">
@@ -764,6 +806,9 @@ QLineEdit{
          <property name="text">
           <string>8</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="0" column="4">
@@ -792,6 +837,9 @@ QLineEdit{
          <property name="text">
           <string>cos</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="0" column="5">
@@ -820,6 +868,9 @@ QLineEdit{
          <property name="text">
           <string>tan</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="1" column="10">
@@ -848,6 +899,9 @@ QLineEdit{
          <property name="text">
           <string>-</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="1" column="11">
@@ -904,6 +958,9 @@ QLineEdit{
          <property name="text">
           <string>acos</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="2" column="6">
@@ -932,6 +989,9 @@ QLineEdit{
          <property name="text">
           <string>7</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="2" column="3">
@@ -960,6 +1020,9 @@ QLineEdit{
          <property name="text">
           <string>sqrt</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="3" column="8">
@@ -988,6 +1051,9 @@ QLineEdit{
          <property name="text">
           <string>.</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="3" column="11">
@@ -1016,6 +1082,9 @@ QLineEdit{
          <property name="text">
           <string>%</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
        <item row="1" column="7">
@@ -1044,6 +1113,9 @@ QLineEdit{
          <property name="text">
           <string>5</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">input_buttons</string>
+         </attribute>
         </widget>
        </item>
       </layout>
@@ -1065,4 +1137,7 @@ QLineEdit{
  </widget>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="input_buttons"/>
+ </buttongroups>
 </ui>

@@ -29,7 +29,7 @@ endif
 	$(CC) -shared -Wl,-soname,model.so -o $(OBJ_DIR)/model.so $(OBJ_DIR)/model.o 
 
 install: build
-	$(PYEXEC) pyinstaller --onefile --windowed mainwindow.py
+	$(PYEXEC) pyinstaller --onefile --windowed view.py
 	./dist/mainwindow
 
 uninstall:
@@ -64,4 +64,4 @@ venv:
 	poetry install
 
 run:
-	$(PYEXEC) python mainwindow.py
+	$(PYEXEC) python view.py
