@@ -15,8 +15,8 @@ class Graphic(ctypes.Structure):
 
 
 def import_cpp() -> ctypes.CDLL:
-    libname = pathlib.Path().absolute() / './build/obj/model.so'
-    lib = ctypes.CDLL(libname)
+    libname: str = pathlib.Path().absolute() / './build/obj/model.so'
+    lib: ctypes.CDLL = ctypes.CDLL(libname)
 
     lib.model_new.restype = ctypes.c_void_p
     lib.set_string.argtypes = [ctypes.c_void_p, ctypes.c_char_p]
@@ -38,7 +38,7 @@ def import_cpp() -> ctypes.CDLL:
     return lib
 
 
-lib = import_cpp()
+lib: ctypes.CDLL = import_cpp()
 
 
 class Model:
@@ -50,7 +50,7 @@ class Model:
         self._px: list[float] = []
         self._py: list[float] = []
 
-    def __del__(self):
+    def __del__(self) -> None:
         lib.model_del(self._model)
 
     def calc(self) -> str:
@@ -60,11 +60,11 @@ class Model:
         res: str = lib.calc(self._model).decode('utf-8')
         return res
 
-    def plot(self, autoscale: bool = False, limit: float = 10):
+    def plot(self, autoscale: bool = False, limit: float = 10) -> None:
         lib.plot(self._model, autoscale, limit)
         self._update_plot_info()
 
-    def _update_plot_info(self):
+    def _update_plot_info(self) -> None:
         length = min(lib.len_px(self._model), lib.len_py(self._model))
         self._px, self._py = [], []
         self._plot = lib.get_plot(self._model)
@@ -89,17 +89,17 @@ class Model:
         self._x = value
 
     @property
-    def plot_minmax(self):
+    def plot_minmax(self) -> Graphic:
         return self._plot
 
     @property
-    def px(self):
+    def px(self) -> list[float]:
         if self._px == []:
             self._update_plot_info()
         return self._px
 
     @property
-    def py(self):
+    def py(self) -> list[float]:
         if self._py == []:
             self._update_plot_info()
         return self._py
