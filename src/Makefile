@@ -64,4 +64,4 @@ venv:
 	poetry install
 
 run:
-	$(PYEXEC) python view.py
+	$(PYEXEC) python main.py

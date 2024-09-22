@@ -3,6 +3,7 @@ from model import Graphic, Model
 import sys
 
 from PySide6.QtWidgets import QApplication
+from presenter import Presenter
 from view import View
 
 if __name__ == '__main__':
@@ -19,6 +20,9 @@ if __name__ == '__main__':
     print(f'{graphic=}\n{m.px=}, {m.py}')
 
     app = QApplication(sys.argv)
+
     widget = View()
+    p = Presenter(m, widget)
+    widget.set_presenter(p)
     widget.show()
     sys.exit(app.exec())

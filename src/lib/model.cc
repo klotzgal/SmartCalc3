@@ -9,13 +9,16 @@ namespace s21 {
  *
  */
 void Model::S21Calc() {
+  setenv("LC_ALL", "en_US.UTF-8", 1);
   std::stack<double> stack_d;
   std::stack<Operator> stack_c;
   last_token_ = cur_token_ = 'n';
   size_t i = 0, count_of_num = 0;
   unary_count_ = 0;
   std::string tmp = str_;
+  std::cout << str_ << std::endl;
   ReplaceX();
+  std::cout << str_ << std::endl;
   str_.erase(std::remove(str_.begin(), str_.end(), ' '), str_.end());
   while (i < str_.length() && str_[i] != '=') {
     //? если число
@@ -456,9 +459,9 @@ void Model::UnaryOperations(std::stack<double> &stack_d,
  * Граница x
  */
 void Model::Plot(bool autoscale, double limit) {
-  double h = limit / 15;
+  double h = limit / 1000;
   double xBegin = -limit;
-  double xEnd = limit + h;
+  double xEnd = limit;
   Px_.clear();
   Py_.clear();
   graphic_.yMin = limit;

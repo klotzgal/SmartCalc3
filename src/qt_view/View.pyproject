@@ -1,6 +1,7 @@
 {
     "files": [
         "../view.py",
-        "form.ui"
+        "form.ui",
+        "graphic.ui"
     ]
 }

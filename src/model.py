@@ -60,7 +60,8 @@ class Model:
         res: str = lib.calc(self._model).decode('utf-8')
         return res
 
-    def plot(self, autoscale: bool = False, limit: float = 10) -> None:
+    def plot(self, autoscale: bool = True, limit: float = 10) -> None:
+        lib.set_string(self._model, self._expression.encode())
         lib.plot(self._model, autoscale, limit)
         self._update_plot_info()
 

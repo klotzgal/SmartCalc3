@@ -16,8 +16,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QButtonGroup, QFrame, QGridLayout,
-    QLineEdit, QMainWindow, QMenuBar, QPushButton,
-    QSizePolicy, QStatusBar, QVBoxLayout, QWidget)
+    QHBoxLayout, QLineEdit, QMainWindow, QMenuBar,
+    QPushButton, QSizePolicy, QStatusBar, QVBoxLayout,
+    QWidget)
 
 class Ui_View(object):
     def setupUi(self, View):
@@ -30,7 +31,7 @@ class Ui_View(object):
         sizePolicy.setHeightForWidth(View.sizePolicy().hasHeightForWidth())
         View.setSizePolicy(sizePolicy)
         View.setMinimumSize(QSize(600, 500))
-        View.setMaximumSize(QSize(687, 500))
+        View.setMaximumSize(QSize(600, 500))
         View.setStyleSheet(u"* {\n"
 "	background-color: #1c1c1e; /* \u0422\u0435\u043c\u043d\u043e-\u0441\u0435\u0440\u044b\u0439, \u0431\u043b\u0438\u0436\u0435 \u043a \u0447\u0435\u0440\u043d\u043e\u043c\u0443 */\n"
 "	color: #e5e5e5; /* \u0421\u0432\u0435\u0442\u043b\u043e-\u0441\u0435\u0440\u044b\u0439 \u0434\u043b\u044f \u0442\u0435\u043a\u0441\u0442\u0430 */\n"
@@ -412,14 +413,14 @@ class Ui_View(object):
 
         self.gridLayout.addWidget(self.button_x, 3, 0, 1, 1)
 
-        self.lineEdit = QLineEdit(self.frame)
-        self.lineEdit.setObjectName(u"lineEdit")
-        self.lineEdit.setMinimumSize(QSize(123, 60))
-        self.lineEdit.setMaximumSize(QSize(123, 60))
-        self.lineEdit.setSizeIncrement(QSize(123, 0))
-        self.lineEdit.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.input_x = QLineEdit(self.frame)
+        self.input_x.setObjectName(u"input_x")
+        self.input_x.setMinimumSize(QSize(123, 60))
+        self.input_x.setMaximumSize(QSize(123, 60))
+        self.input_x.setSizeIncrement(QSize(123, 0))
+        self.input_x.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.gridLayout.addWidget(self.lineEdit, 3, 1, 1, 1)
+        self.gridLayout.addWidget(self.input_x, 3, 1, 1, 1)
 
         self.button_00 = QPushButton(self.frame)
         self.input_buttons.addButton(self.button_00)
@@ -494,6 +495,28 @@ class Ui_View(object):
         self.frame_2.setObjectName(u"frame_2")
         self.frame_2.setFrameShape(QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout = QHBoxLayout(self.frame_2)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.button_plot = QPushButton(self.frame_2)
+        self.button_plot.setObjectName(u"button_plot")
+        sizePolicy1.setHeightForWidth(self.button_plot.sizePolicy().hasHeightForWidth())
+        self.button_plot.setSizePolicy(sizePolicy1)
+        self.button_plot.setMinimumSize(QSize(60, 60))
+        self.button_plot.setMaximumSize(QSize(9999, 60))
+        self.button_plot.setStyleSheet(u"")
+
+        self.horizontalLayout.addWidget(self.button_plot)
+
+        self.button_x_3 = QPushButton(self.frame_2)
+        self.button_x_3.setObjectName(u"button_x_3")
+        sizePolicy1.setHeightForWidth(self.button_x_3.sizePolicy().hasHeightForWidth())
+        self.button_x_3.setSizePolicy(sizePolicy1)
+        self.button_x_3.setMinimumSize(QSize(60, 60))
+        self.button_x_3.setMaximumSize(QSize(9999, 60))
+        self.button_x_3.setStyleSheet(u"")
+
+        self.horizontalLayout.addWidget(self.button_x_3)
+
 
         self.verticalLayout.addWidget(self.frame_2)
 
@@ -541,12 +564,14 @@ class Ui_View(object):
         self.button_cos.setText(QCoreApplication.translate("View", u"cos", None))
         self.button_minus.setText(QCoreApplication.translate("View", u"-", None))
         self.button_x.setText(QCoreApplication.translate("View", u"x", None))
-        self.lineEdit.setText(QCoreApplication.translate("View", u"0", None))
+        self.input_x.setText(QCoreApplication.translate("View", u"0", None))
         self.button_00.setText(QCoreApplication.translate("View", u"00", None))
         self.button_0.setText(QCoreApplication.translate("View", u"0", None))
         self.button_dot.setText(QCoreApplication.translate("View", u".", None))
         self.button_div.setText(QCoreApplication.translate("View", u"/", None))
         self.button_mod.setText(QCoreApplication.translate("View", u"%", None))
         self.button_pow.setText(QCoreApplication.translate("View", u"^", None))
+        self.button_plot.setText(QCoreApplication.translate("View", u"Plot", None))
+        self.button_x_3.setText(QCoreApplication.translate("View", u"Credit", None))
     # retranslateUi
 
