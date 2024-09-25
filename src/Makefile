@@ -26,7 +26,8 @@ ifeq ("", "$(wildcard .venv/)")
 	make venv
 endif
 	$(CC) -c -fPIC lib/model.cc -Wextra -Wall -o $(OBJ_DIR)/model.o
-	$(CC) -shared -Wl,-soname,model.so -o $(OBJ_DIR)/model.so $(OBJ_DIR)/model.o 
+	$(CC) -c -fPIC lib/credit_model.cc -Wextra -Wall -o $(OBJ_DIR)/credit_model.o
+	$(CC) -shared -Wl,-soname,model.so -o $(OBJ_DIR)/model.so $(OBJ_DIR)/model.o $(OBJ_DIR)/credit_model.o
 
 install: build
 	$(PYEXEC) pyinstaller --onefile --windowed view.py

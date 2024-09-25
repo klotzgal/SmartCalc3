@@ -15,5 +15,5 @@ class Presenter():
 
     def plot(self) -> None:
         self.model.expression = self.view.input
-        self.model.plot(limit=10)
+        self.model.plot(limit=1000000)
         self.view.show_plot(self.model.px, self.model.py)
