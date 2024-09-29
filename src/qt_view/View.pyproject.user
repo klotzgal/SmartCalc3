@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 13.0.0, 2024-09-24T16:00:57. -->
+<!-- Written by QtCreator 13.0.0, 2024-09-29T14:21:13. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -171,7 +171,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">../main.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration./home/klotzgal/Desktop/kl/s21_Python/APP2_SmartCalc_v3.0_Desktop_Python-1/src/main.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/klotzgal/Desktop/kl/s21_Python/APP2_SmartCalc_v3.0_Desktop_Python-1/src/main.py</value>
-    <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">false</value>
+    <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">true</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">/home/klotzgal/Desktop/kl/s21_Python/APP2_SmartCalc_v3.0_Desktop_Python-1/src/main.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>

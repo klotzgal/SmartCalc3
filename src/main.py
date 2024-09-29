@@ -1,4 +1,4 @@
-from model import Graphic, Model
+from model import Model
 
 import sys
 

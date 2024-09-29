@@ -10,7 +10,7 @@ from PySide6.QtCore import QRegularExpression
 # You need to run the following command to generate the ui_form.py file
 #     pyside6-uic form.ui -o ui_form.py, or
 #     pyside2-uic form.ui -o ui_form.py
-from qt_view.graphic import Graphic
+from qt_view.graphic import GraphicWindow
 from qt_view.ui_form import Ui_View
 
 
@@ -35,7 +35,7 @@ class IView:
     def set_presenter(self, presenter: Any) -> None:
         ...
 
-    def show_plot(self, x, y) -> None:
+    def show_plot(self, x: list[float], y: list[float], x_min: float, x_max: float, y_min: float, y_max: float) -> None:
         ...
 
 
@@ -45,7 +45,8 @@ class View(IView, QMainWindow):
         self.presenter: Any = presenter
         self.ui = Ui_View()
         self.ui.setupUi(self)
-        self.graphic_window = Graphic(main_window=self)
+        self.graphic_window = GraphicWindow(main_window=self)
+        self._limit: int = 10
 
         self.ui.button_plot.clicked.connect(
             self._button_plot_slot
@@ -77,8 +78,8 @@ class View(IView, QMainWindow):
     def set_presenter(self, presenter: Any) -> None:
         self.presenter = presenter
 
-    def show_plot(self, x, y) -> None:
-        self.graphic_window.print_plot(x, y)
+    def show_plot(self, x: list[float], y: list[float], x_min: float, x_max: float, y_min: float, y_max: float) -> None:
+        self.graphic_window.print_plot(x, y, x_min, x_max, y_min, y_max)
 
     def _print_in_input_slot(self) -> None:
         if self.ui.button_equal.isChecked():
@@ -106,8 +107,9 @@ class View(IView, QMainWindow):
         self.ui.button_equal.setChecked(True)
 
     def _button_plot_slot(self) -> None:
-        self.graphic_window.ui.expression.setText(self.ui.input.text())
-        self.presenter.plot()
+        self.graphic_window.plot.expression = str(self.ui.input.text())
+        self.presenter.plot(self.graphic_window.ui.autoscale.isChecked(),
+                            self._limit)
         self.graphic_window.show()
         self.close()
 

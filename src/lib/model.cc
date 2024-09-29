@@ -457,7 +457,7 @@ void Model::UnaryOperations(std::stack<double> &stack_d,
  * Граница x
  */
 void Model::Plot(bool autoscale, double limit) {
-  double h = limit / 10000;
+  double h = limit / 15;
   double xBegin = -limit;
   double xEnd = limit;
   Px_.clear();
@@ -493,6 +493,11 @@ void Model::Plot(bool autoscale, double limit) {
     if (graphic_.yMax > yMean + limit) graphic_.yMax = yMean + limit;
     if (graphic_.xMin < xMean - limit) graphic_.xMin = xMean - limit;
     if (graphic_.xMax > xMean + limit) graphic_.xMax = xMean + limit;
+  } else {
+    graphic_.yMin = -limit;
+    graphic_.yMax = limit;
+    graphic_.xMin = -limit;
+    graphic_.xMax = limit;
   }
 }
 

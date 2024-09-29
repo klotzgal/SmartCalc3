@@ -13,7 +13,9 @@ class Presenter():
         self.model.x = float(self.view.input_x)
         self.view.input = self.model.calc()
 
-    def plot(self) -> None:
+    def plot(self, autoscale: bool = False, limit: float = 10) -> None:
         self.model.expression = self.view.input
-        self.model.plot(limit=1000000)
-        self.view.show_plot(self.model.px, self.model.py)
+        self.model.plot(autoscale, limit=limit)
+        minmax = self.model.plot_minmax
+        self.view.show_plot(self.model.px, self.model.py,
+                            minmax.xMin, minmax.xMax, minmax.yMin, minmax.yMax)
