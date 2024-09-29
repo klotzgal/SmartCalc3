@@ -1,8 +1,8 @@
-from model import Model
-
 import sys
 
 from PySide6.QtWidgets import QApplication
+
+from model import Model
 from presenter import Presenter
 from view import View
 

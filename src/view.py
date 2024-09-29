@@ -2,9 +2,9 @@
 import sys
 from typing import Any
 
-from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton
-from PySide6.QtGui import QRegularExpressionValidator
 from PySide6.QtCore import QRegularExpression
+from PySide6.QtGui import QRegularExpressionValidator
+from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton
 
 # Important:
 # You need to run the following command to generate the ui_form.py file
@@ -15,28 +15,29 @@ from qt_view.ui_form import Ui_View
 
 
 class IView:
-
     @property
-    def input(self) -> str:
-        ...
+    def input(self) -> str: ...
 
     @input.setter
-    def input(self, text: str) -> None:
-        ...
+    def input(self, text: str) -> None: ...
 
     @property
-    def input_x(self) -> str:
-        ...
+    def input_x(self) -> str: ...
 
     @input_x.setter
-    def input_x(self, text: str) -> None:
-        ...
+    def input_x(self, text: str) -> None: ...
 
-    def set_presenter(self, presenter: Any) -> None:
-        ...
+    def set_presenter(self, presenter: Any) -> None: ...
 
-    def show_plot(self, x: list[float], y: list[float], x_min: float, x_max: float, y_min: float, y_max: float) -> None:
-        ...
+    def show_plot(
+        self,
+        x: list[float],
+        y: list[float],
+        x_min: float,
+        x_max: float,
+        y_min: float,
+        y_max: float,
+    ) -> None: ...
 
 
 class View(IView, QMainWindow):
@@ -48,37 +49,33 @@ class View(IView, QMainWindow):
         self.graphic_window = GraphicWindow(main_window=self)
         self._limit: int = 10
 
-        self.ui.button_plot.clicked.connect(
-            self._button_plot_slot
-        )
+        self.ui.button_plot.clicked.connect(self._button_plot_slot)
 
         self.ui.button_equal.setCheckable(True)
         self.ui.button_equal.setChecked(True)
-        self.ui.button_equal.clicked.connect(
-            self._button_equal_slot
-        )
-        self.ui.button_c.clicked.connect(
-            self._button_clear_slot
-        )
-        self.ui.button_ac.clicked.connect(
-            self._button_all_clear_slot
-        )
+        self.ui.button_equal.clicked.connect(self._button_equal_slot)
+        self.ui.button_c.clicked.connect(self._button_clear_slot)
+        self.ui.button_ac.clicked.connect(self._button_all_clear_slot)
 
         for button in self.ui.input_buttons.buttons():
-            button.clicked.connect(
-                self._print_in_input_slot
-            )
+            button.clicked.connect(self._print_in_input_slot)
 
         self.ui.input.setValidator(
-            QRegularExpressionValidator(
-                QRegularExpression(r'^[^\s]+$')
-            )
+            QRegularExpressionValidator(QRegularExpression(r'^[^\s]+$'))
         )
 
     def set_presenter(self, presenter: Any) -> None:
         self.presenter = presenter
 
-    def show_plot(self, x: list[float], y: list[float], x_min: float, x_max: float, y_min: float, y_max: float) -> None:
+    def show_plot(
+        self,
+        x: list[float],
+        y: list[float],
+        x_min: float,
+        x_max: float,
+        y_min: float,
+        y_max: float,
+    ) -> None:
         self.graphic_window.print_plot(x, y, x_min, x_max, y_min, y_max)
 
     def _print_in_input_slot(self) -> None:
@@ -108,8 +105,7 @@ class View(IView, QMainWindow):
 
     def _button_plot_slot(self) -> None:
         self.graphic_window.plot.expression = str(self.ui.input.text())
-        self.presenter.plot(self.graphic_window.ui.autoscale.isChecked(),
-                            self._limit)
+        self.presenter.plot(self.graphic_window.ui.autoscale.isChecked(), self._limit)
         self.graphic_window.show()
         self.close()
 

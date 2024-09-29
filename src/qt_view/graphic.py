@@ -1,15 +1,13 @@
-from PySide6.QtWidgets import QWidget, QVBoxLayout
+import numpy as np
+import pyqtgraph as pg
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
-
+from PySide6.QtWidgets import QVBoxLayout, QWidget
 
 from qt_view.ui_graphic import Ui_Graphic
-import pyqtgraph as pg
-import numpy as np
 
 
 class GraphicWindow(QWidget):
-
     def __init__(self, parent=None, main_window=None) -> None:
         super().__init__(parent)
         self.main_window = main_window
@@ -20,26 +18,26 @@ class GraphicWindow(QWidget):
         self.plot = PlotCanvas(self)
         layout.addWidget(self.plot)
 
-        self.ui.button_back.clicked.connect(
-            self._button_back_slot
-        )
+        self.ui.button_back.clicked.connect(self._button_back_slot)
 
-        self.ui.slider.valueChanged.connect(
-            self._slider_slot
-        )
+        self.ui.slider.valueChanged.connect(self._slider_slot)
 
-        self.ui.limit.textChanged.connect(
-            self._limit_slot
-        )
-        self.ui.autoscale.stateChanged.connect(
-            self.main_window._button_plot_slot
-        )
+        self.ui.limit.textChanged.connect(self._limit_slot)
+        self.ui.autoscale.stateChanged.connect(self.main_window._button_plot_slot)
 
     def _button_back_slot(self) -> None:
         self.main_window.show()
         self.close()
 
-    def print_plot(self, x: list[float], y: list[float], x_min: float, x_max: float, y_min: float, y_max: float) -> None:
+    def print_plot(
+        self,
+        x: list[float],
+        y: list[float],
+        x_min: float,
+        x_max: float,
+        y_min: float,
+        y_max: float,
+    ) -> None:
         self.plot.plot(x, y, x_min, x_max, y_min, y_max)
 
     def _slider_slot(self) -> None:
@@ -73,16 +71,15 @@ class PlotCanvas(FigureCanvas):
 
         self.axes.tick_params(axis='x', colors=self.text_color)
         self.axes.tick_params(axis='y', colors=self.text_color)
-        self.axes.spines['bottom'].set_color(
-            self.text_color)
+        self.axes.spines['bottom'].set_color(self.text_color)
         self.axes.spines['left'].set_color(self.text_color)
 
     def plot(self, x_data, y_data, x_min, x_max, y_min, y_max) -> None:
         self.axes.clear()
         self.axes.set_xlim(x_min, x_max)
         self.axes.set_ylim(y_min, y_max)
-        self.axes.plot(x_data, y_data, color='#567890',
-                       linestyle='-', linewidth=2)
+        self.axes.plot(x_data, y_data, color='#567890', linestyle='-', linewidth=2)
         self.axes.set_title(
-            self.expression, color=self.text_color, fontname='Open Sans')
+            self.expression, color=self.text_color, fontname='Open Sans'
+        )
         self.draw()

@@ -2,8 +2,7 @@ from model import Model
 from view import IView
 
 
-class Presenter():
-
+class Presenter:
     def __init__(self, model: Model, view: IView) -> None:
         self.model = model
         self.view = view
@@ -17,5 +16,11 @@ class Presenter():
         self.model.expression = self.view.input
         self.model.plot(autoscale, limit=limit)
         minmax = self.model.plot_minmax
-        self.view.show_plot(self.model.px, self.model.py,
-                            minmax.xMin, minmax.xMax, minmax.yMin, minmax.yMax)
+        self.view.show_plot(
+            self.model.px,
+            self.model.py,
+            minmax.xMin,
+            minmax.xMax,
+            minmax.yMin,
+            minmax.yMax,
+        )

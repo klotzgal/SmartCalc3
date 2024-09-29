@@ -42,7 +42,7 @@ def import_cpp() -> ctypes.CDLL:
         ctypes.c_double,
         ctypes.c_double,
         ctypes.c_double,
-        ctypes.c_bool
+        ctypes.c_bool,
     ]
     lib.get_every_month_payment.restype = ctypes.c_char_p
     lib.get_every_month_payment.argtypes = [ctypes.c_void_p]
@@ -81,8 +81,7 @@ class Model:
 
     def credit_calc(self, S: float, n: float, p: float, annuity: bool = True) -> None:
         lib.credit_calc(self._credit_model, S, n, p, annuity)
-        self._every_month_payment = lib.get_every_month_payment(
-            self._credit_model)
+        self._every_month_payment = lib.get_every_month_payment(self._credit_model)
         self._overpayment = lib.get_overpayment(self._credit_model)
         self._total = lib.get_total(self._credit_model)
 
