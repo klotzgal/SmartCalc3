@@ -36,7 +36,6 @@ class GraphicWindow(QWidget):
         y_min: float,
         y_max: float,
     ) -> None:
-        # print(f'{x=}, {y=}, {x_min=}, {x_max=}, {y_min=}, {y_max=}')
         self.plot.plot(x, y, x_min, x_max, y_min, y_max)
 
     def _slider_slot(self) -> None:

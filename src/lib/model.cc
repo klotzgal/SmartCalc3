@@ -261,7 +261,6 @@ void Model::Calculation(std::stack<double> &stack_d,
         stack_d.push(cosl(second));
       } else if (oper == 's') {
         stack_d.push(sinl(second));
-        std::cout << "sin(" << second << ") =" << sinl(second) << " ";
       } else if (oper == 't') {
         stack_d.push(tanl(second));
       } else if (oper == 'o') {
@@ -458,7 +457,7 @@ void Model::UnaryOperations(std::stack<double> &stack_d,
  * Граница x
  */
 void Model::Plot(bool autoscale, double limit) {
-  double h = limit / 40;
+  double h = 0.1;
   double xBegin = -limit;
   double xEnd = limit;
   Px_.clear();
@@ -481,8 +480,6 @@ void Model::Plot(bool autoscale, double limit) {
       }
       Py_.push_back(Y);
     }
-    std::cout << "\n";
-
   } catch (const std::exception &e) {
     Px_.clear();
     Py_.clear();
