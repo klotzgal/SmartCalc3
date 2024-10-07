@@ -1,5 +1,3 @@
-import numpy as np
-import pyqtgraph as pg
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 from PySide6.QtWidgets import QVBoxLayout, QWidget
@@ -20,7 +18,7 @@ class GraphicWindow(QWidget):
 
         self.ui.button_back.clicked.connect(self._button_back_slot)
 
-        self.ui.slider.valueChanged.connect(self._slider_slot)
+        self.ui.slider.sliderReleased.connect(self._slider_slot)
 
         self.ui.limit.textChanged.connect(self._limit_slot)
         self.ui.autoscale.stateChanged.connect(self.main_window._button_plot_slot)
@@ -38,6 +36,7 @@ class GraphicWindow(QWidget):
         y_min: float,
         y_max: float,
     ) -> None:
+        # print(f'{x=}, {y=}, {x_min=}, {x_max=}, {y_min=}, {y_max=}')
         self.plot.plot(x, y, x_min, x_max, y_min, y_max)
 
     def _slider_slot(self) -> None:

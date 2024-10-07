@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'graphic.ui'
+# Form generated from reading UI file 'graphic.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.7.2
+# Created by: Qt User Interface Compiler version 6.7.2
 ##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
+# WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
 from PySide6.QtCore import (
@@ -225,8 +225,8 @@ class Ui_Graphic(object):
         self.horizontalLayout_4.setObjectName('horizontalLayout_4')
         self.slider = QSlider(self.widget_2)
         self.slider.setObjectName('slider')
-        self.slider.setMinimum(0)
-        self.slider.setMaximum(1000000)
+        self.slider.setMinimum(1)
+        self.slider.setMaximum(1000)
         self.slider.setSingleStep(10)
         self.slider.setValue(10)
         self.slider.setOrientation(Qt.Vertical)
@@ -238,7 +238,7 @@ class Ui_Graphic(object):
 
         self.autoscale = QCheckBox(self.frame)
         self.autoscale.setObjectName('autoscale')
-        self.autoscale.setLayoutDirection(Qt.RightToLeft)
+        self.autoscale.setLayoutDirection(Qt.LeftToRight)
 
         self.verticalLayout.addWidget(self.autoscale)
 
@@ -246,11 +246,10 @@ class Ui_Graphic(object):
         self.widget.setObjectName('widget')
         self.horizontalLayout = QHBoxLayout(self.widget)
         self.horizontalLayout.setObjectName('horizontalLayout')
-        self.label_x_max = QLabel(self.widget)
-        self.label_x_max.setObjectName('label_x_max')
-        sizePolicy1 = QSizePolicy(
-            QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Preferred
-        )
+        self.horizontalLayout.setContentsMargins(0, 9, 0, 9)
+        self.limit = QSpinBox(self.widget)
+        self.limit.setObjectName('limit')
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.label_x_max.sizePolicy().hasHeightForWidth())
@@ -260,17 +259,30 @@ class Ui_Graphic(object):
 
         self.limit = QSpinBox(self.widget)
         self.limit.setObjectName('limit')
-        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.limit.sizePolicy().hasHeightForWidth())
-        self.limit.setSizePolicy(sizePolicy2)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.limit.sizePolicy().hasHeightForWidth())
+        self.limit.setSizePolicy(sizePolicy1)
+        self.limit.setMaximumSize(QSize(60, 16777215))
         self.limit.setMinimum(-1000000)
         self.limit.setMaximum(1000000)
         self.limit.setSingleStep(1)
         self.limit.setValue(10)
 
         self.horizontalLayout.addWidget(self.limit)
+
+        self.label_x_max = QLabel(self.widget)
+        self.label_x_max.setObjectName('label_x_max')
+        sizePolicy2 = QSizePolicy(
+            QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Preferred
+        )
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.label_x_max.sizePolicy().hasHeightForWidth())
+        self.label_x_max.setSizePolicy(sizePolicy2)
+
+        self.horizontalLayout.addWidget(self.label_x_max)
 
         self.verticalLayout.addWidget(self.widget)
 
@@ -281,7 +293,7 @@ class Ui_Graphic(object):
         sizePolicy3.setVerticalStretch(0)
         sizePolicy3.setHeightForWidth(self.button_back.sizePolicy().hasHeightForWidth())
         self.button_back.setSizePolicy(sizePolicy3)
-        self.button_back.setMinimumSize(QSize(140, 60))
+        self.button_back.setMinimumSize(QSize(0, 60))
         self.button_back.setMaximumSize(QSize(9999, 60))
         self.button_back.setStyleSheet('')
 

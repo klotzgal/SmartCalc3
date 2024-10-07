@@ -192,10 +192,10 @@ QSpinBox::up-arrow, QSpinBox::down-arrow {
             <item>
              <widget class="QSlider" name="slider">
               <property name="minimum">
-               <number>0</number>
+               <number>1</number>
               </property>
               <property name="maximum">
-               <number>1000000</number>
+               <number>1000</number>
               </property>
               <property name="singleStep">
                <number>10</number>
@@ -217,7 +217,7 @@ QSpinBox::up-arrow, QSpinBox::down-arrow {
          <item>
           <widget class="QCheckBox" name="autoscale">
            <property name="layoutDirection">
-            <enum>Qt::RightToLeft</enum>
+            <enum>Qt::LeftToRight</enum>
            </property>
            <property name="text">
             <string>Autoscale</string>
@@ -227,19 +227,18 @@ QSpinBox::up-arrow, QSpinBox::down-arrow {
          <item>
           <widget class="QWidget" name="widget" native="true">
            <layout class="QHBoxLayout" name="horizontalLayout">
-            <item>
-             <widget class="QLabel" name="label_x_max">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Range</string>
-              </property>
-             </widget>
-            </item>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>9</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>9</number>
+            </property>
             <item>
              <widget class="QSpinBox" name="limit">
               <property name="sizePolicy">
@@ -247,6 +246,12 @@ QSpinBox::up-arrow, QSpinBox::down-arrow {
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>60</width>
+                <height>16777215</height>
+               </size>
               </property>
               <property name="minimum">
                <number>-1000000</number>
@@ -259,6 +264,19 @@ QSpinBox::up-arrow, QSpinBox::down-arrow {
               </property>
               <property name="value">
                <number>10</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_x_max">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Range</string>
               </property>
              </widget>
             </item>
@@ -275,7 +293,7 @@ QSpinBox::up-arrow, QSpinBox::down-arrow {
            </property>
            <property name="minimumSize">
             <size>
-             <width>140</width>
+             <width>0</width>
              <height>60</height>
             </size>
            </property>

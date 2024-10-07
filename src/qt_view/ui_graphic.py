@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'graphic.ui'
+# Form generated from reading UI file 'graphic.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.7.2
+# Created by: Qt User Interface Compiler version 6.7.2
 ##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
+# WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
 from PySide6.QtCore import (
@@ -225,8 +225,8 @@ class Ui_Graphic(object):
         self.horizontalLayout_4.setObjectName('horizontalLayout_4')
         self.slider = QSlider(self.widget_2)
         self.slider.setObjectName('slider')
-        self.slider.setMinimum(0)
-        self.slider.setMaximum(1000000)
+        self.slider.setMinimum(1)
+        self.slider.setMaximum(1000)
         self.slider.setSingleStep(10)
         self.slider.setValue(10)
         self.slider.setOrientation(Qt.Vertical)
@@ -238,7 +238,7 @@ class Ui_Graphic(object):
 
         self.autoscale = QCheckBox(self.frame)
         self.autoscale.setObjectName('autoscale')
-        self.autoscale.setLayoutDirection(Qt.RightToLeft)
+        self.autoscale.setLayoutDirection(Qt.LeftToRight)
 
         self.verticalLayout.addWidget(self.autoscale)
 
@@ -281,7 +281,7 @@ class Ui_Graphic(object):
         sizePolicy3.setVerticalStretch(0)
         sizePolicy3.setHeightForWidth(self.button_back.sizePolicy().hasHeightForWidth())
         self.button_back.setSizePolicy(sizePolicy3)
-        self.button_back.setMinimumSize(QSize(140, 60))
+        self.button_back.setMinimumSize(QSize(0, 60))
         self.button_back.setMaximumSize(QSize(9999, 60))
         self.button_back.setStyleSheet('')
 
