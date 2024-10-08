@@ -8,18 +8,21 @@ namespace s21 {
 
 class CreditModel {
  public:
-  CreditModel() : every_month_payment_(""), overpayment_(0), total_(0) {}
+  CreditModel()
+      : first_payment_(0), last_payment_(0), overpayment_(0), total_(0) {}
   ~CreditModel() {}
 
   //* Методы класса
 
   void S21Calc(const double S, const double n, double p, bool annuity);
-  std::string getEveryMonthPayment() { return every_month_payment_; }
+  double getFirstPayment() { return first_payment_; }
+  double getLastPayment() { return last_payment_; }
   double getOverpayment() { return overpayment_; }
   double getTotal() { return total_; }
 
  private:
-  std::string every_month_payment_;
+  double first_payment_;
+  double last_payment_;
   double overpayment_;
   double total_;
 };
@@ -30,8 +33,9 @@ CreditModel *credit_model_new();
 void credit_model_del(CreditModel *m);
 void credit_calc(CreditModel *m, const double S, const double n, double p,
                  bool annuity);
-const char *get_every_month_payment(CreditModel *m);
 double get_overpayment(CreditModel *m);
+double get_first_payment(CreditModel *m);
+double get_last_payment(CreditModel *m);
 double get_total(CreditModel *m);
 }
 }  // namespace s21

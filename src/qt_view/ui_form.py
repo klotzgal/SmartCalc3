@@ -553,22 +553,24 @@ class Ui_View(object):
 
         self.horizontalLayout.addWidget(self.button_plot)
 
-        self.button_x_3 = QPushButton(self.frame_2)
-        self.button_x_3.setObjectName('button_x_3')
-        sizePolicy1.setHeightForWidth(self.button_x_3.sizePolicy().hasHeightForWidth())
-        self.button_x_3.setSizePolicy(sizePolicy1)
-        self.button_x_3.setMinimumSize(QSize(60, 60))
-        self.button_x_3.setMaximumSize(QSize(9999, 60))
-        self.button_x_3.setStyleSheet('')
+        self.button_credit = QPushButton(self.frame_2)
+        self.button_credit.setObjectName('button_credit')
+        sizePolicy1.setHeightForWidth(
+            self.button_credit.sizePolicy().hasHeightForWidth()
+        )
+        self.button_credit.setSizePolicy(sizePolicy1)
+        self.button_credit.setMinimumSize(QSize(60, 60))
+        self.button_credit.setMaximumSize(QSize(9999, 60))
+        self.button_credit.setStyleSheet('')
 
-        self.horizontalLayout.addWidget(self.button_x_3)
+        self.horizontalLayout.addWidget(self.button_credit)
 
         self.verticalLayout.addWidget(self.frame_2)
 
         View.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(View)
         self.menubar.setObjectName('menubar')
-        self.menubar.setGeometry(QRect(0, 0, 600, 31))
+        self.menubar.setGeometry(QRect(0, 0, 600, 22))
         View.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(View)
         self.statusbar.setObjectName('statusbar')
@@ -618,6 +620,6 @@ class Ui_View(object):
         self.button_mod.setText(QCoreApplication.translate('View', '%', None))
         self.button_pow.setText(QCoreApplication.translate('View', '^', None))
         self.button_plot.setText(QCoreApplication.translate('View', 'Plot', None))
-        self.button_x_3.setText(QCoreApplication.translate('View', 'Credit', None))
+        self.button_credit.setText(QCoreApplication.translate('View', 'Credit', None))
 
     # retranslateUi

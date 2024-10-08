@@ -24,3 +24,11 @@ class Presenter:
             minmax.yMin,
             minmax.yMax,
         )
+
+    def credit_calc(self, S: float, n: float, p: float, annuity: bool = True) -> None:
+        self.model.credit_calc(S, n, p, annuity)
+        self.view.show_credit(
+            self.model.every_month_payment,
+            self.model.total,
+            self.model.overpayment,
+        )

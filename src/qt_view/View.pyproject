@@ -3,6 +3,7 @@
         "../view.py",
         "../main.py",
         "form.ui",
-        "graphic.ui"
+        "graphic.ui",
+        "credit.ui"
     ]
 }

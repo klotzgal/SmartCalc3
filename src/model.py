@@ -44,8 +44,10 @@ def import_cpp() -> ctypes.CDLL:
         ctypes.c_double,
         ctypes.c_bool,
     ]
-    lib.get_every_month_payment.restype = ctypes.c_char_p
-    lib.get_every_month_payment.argtypes = [ctypes.c_void_p]
+    lib.get_first_payment.restype = ctypes.c_double
+    lib.get_first_payment.argtypes = [ctypes.c_void_p]
+    lib.get_last_payment.restype = ctypes.c_double
+    lib.get_last_payment.argtypes = [ctypes.c_void_p]
     lib.get_overpayment.restype = ctypes.c_double
     lib.get_overpayment.argtypes = [ctypes.c_void_p]
     lib.get_total.restype = ctypes.c_double
@@ -81,9 +83,14 @@ class Model:
 
     def credit_calc(self, S: float, n: float, p: float, annuity: bool = True) -> None:
         lib.credit_calc(self._credit_model, S, n, p, annuity)
-        self._every_month_payment = lib.get_every_month_payment(self._credit_model)
-        self._overpayment = lib.get_overpayment(self._credit_model)
-        self._total = lib.get_total(self._credit_model)
+        self._overpayment = round(lib.get_overpayment(self._credit_model), 2)
+        self._every_month_payment = str(
+            round(lib.get_first_payment(self._credit_model), 2)
+        )
+        last = lib.get_last_payment(self._credit_model)
+        if last != -1:
+            self._every_month_payment += '\n' + str(round(last, 2))
+        self._total = round(lib.get_total(self._credit_model), 2)
 
     def plot(self, autoscale: bool = False, limit: float = 10) -> None:
         lib.set_string(self._model, self._expression.encode())

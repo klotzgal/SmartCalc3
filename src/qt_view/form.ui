@@ -1218,7 +1218,7 @@ QLineEdit{
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="button_x_3">
+        <widget class="QPushButton" name="button_credit">
          <property name="sizePolicy">
           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -1256,7 +1256,7 @@ QLineEdit{
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>31</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

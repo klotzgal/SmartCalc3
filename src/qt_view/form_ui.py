@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'form.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.6.1
+## Created by: Qt User Interface Compiler version 6.7.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -62,7 +62,7 @@ class Ui_View(object):
         if not View.objectName():
             View.setObjectName('View')
         View.resize(600, 500)
-        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(View.sizePolicy().hasHeightForWidth())
@@ -133,7 +133,9 @@ class Ui_View(object):
         self.verticalLayout.setObjectName('verticalLayout')
         self.input = QLineEdit(self.centralwidget)
         self.input.setObjectName('input')
-        sizePolicy1 = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Fixed)
+        sizePolicy1 = QSizePolicy(
+            QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.Fixed
+        )
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.input.sizePolicy().hasHeightForWidth())
@@ -148,7 +150,9 @@ class Ui_View(object):
 
         self.frame = QFrame(self.centralwidget)
         self.frame.setObjectName('frame')
-        sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy2 = QSizePolicy(
+            QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred
+        )
         sizePolicy2.setHorizontalStretch(0)
         sizePolicy2.setVerticalStretch(0)
         sizePolicy2.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
@@ -549,22 +553,24 @@ class Ui_View(object):
 
         self.horizontalLayout.addWidget(self.button_plot)
 
-        self.button_x_3 = QPushButton(self.frame_2)
-        self.button_x_3.setObjectName('button_x_3')
-        sizePolicy1.setHeightForWidth(self.button_x_3.sizePolicy().hasHeightForWidth())
-        self.button_x_3.setSizePolicy(sizePolicy1)
-        self.button_x_3.setMinimumSize(QSize(60, 60))
-        self.button_x_3.setMaximumSize(QSize(9999, 60))
-        self.button_x_3.setStyleSheet('')
+        self.button_credit = QPushButton(self.frame_2)
+        self.button_credit.setObjectName('button_credit')
+        sizePolicy1.setHeightForWidth(
+            self.button_credit.sizePolicy().hasHeightForWidth()
+        )
+        self.button_credit.setSizePolicy(sizePolicy1)
+        self.button_credit.setMinimumSize(QSize(60, 60))
+        self.button_credit.setMaximumSize(QSize(9999, 60))
+        self.button_credit.setStyleSheet('')
 
-        self.horizontalLayout.addWidget(self.button_x_3)
+        self.horizontalLayout.addWidget(self.button_credit)
 
         self.verticalLayout.addWidget(self.frame_2)
 
         View.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(View)
         self.menubar.setObjectName('menubar')
-        self.menubar.setGeometry(QRect(0, 0, 600, 31))
+        self.menubar.setGeometry(QRect(0, 0, 600, 22))
         View.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(View)
         self.statusbar.setObjectName('statusbar')
@@ -614,6 +620,6 @@ class Ui_View(object):
         self.button_mod.setText(QCoreApplication.translate('View', '%', None))
         self.button_pow.setText(QCoreApplication.translate('View', '^', None))
         self.button_plot.setText(QCoreApplication.translate('View', 'Plot', None))
-        self.button_x_3.setText(QCoreApplication.translate('View', 'Credit', None))
+        self.button_credit.setText(QCoreApplication.translate('View', 'Credit', None))
 
     # retranslateUi

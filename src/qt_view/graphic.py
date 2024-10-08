@@ -11,6 +11,7 @@ class GraphicWindow(QWidget):
         self.main_window = main_window
         self.ui = Ui_Graphic()
         self.ui.setupUi(self)
+        self.setWindowTitle('Plot')
         layout = QVBoxLayout(self.ui.plot)
         self.ui.plot.setLayout(layout)
         self.plot = PlotCanvas(self)

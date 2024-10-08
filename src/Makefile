@@ -58,11 +58,6 @@ tests: build
 	$(CC) tests/test.cc -Wl,-rpath,$(OBJ_DIR) $(OBJ_DIR)/model.so -o dist/test $(FLAGS_PLATFORM) $(FLAGS)
 	./dist/test
 
-# cov:
-# 	$(PYEXEC) pytest --cov --cov-report=html #-W ignore::DeprecationWarning
-# 	open htmlcov/index.html
-
-
 venv:
 	# $(PYTHON) -m poetry config --local virtualenvs.in-project true
 	$(PYTHON) -m poetry env use $(PYTHON)

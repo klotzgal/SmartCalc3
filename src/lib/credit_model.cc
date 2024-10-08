@@ -10,7 +10,8 @@ void CreditModel::S21Calc(const double S, const double n, double p,
   if (annuity) {
     double k = p * pow(1 + p, n) / (pow(1 + p, n) - 1);
     double result = k * S * n;
-    every_month_payment_ = std::to_string(k * S);
+    first_payment_ = k * S;
+    last_payment_ = -1;
     overpayment_ = result - S;
     total_ = result;
   } else {
@@ -23,12 +24,12 @@ void CreditModel::S21Calc(const double S, const double n, double p,
         firstPay = result;
       }
     }
-    every_month_payment_ =
-        std::to_string(firstPay) + "\n" + std::to_string(lastPay);
+    first_payment_ = firstPay;
+    last_payment_ = lastPay;
     overpayment_ = result - S;
     total_ = result;
   }
-  std::cout << "every_month_payment_ =|" << every_month_payment_ << "|"
+  std::cout << "Платежи " << first_payment_ << " и " << last_payment_
             << std::endl;
 }
 
@@ -38,11 +39,8 @@ void credit_calc(CreditModel *m, const double S, const double n, double p,
                  bool annuity) {
   m->S21Calc(S, n, p, annuity);
 }
-const char *get_every_month_payment(CreditModel *m) {
-  std::string s = m->getEveryMonthPayment();
-  std::cout << "s = " << s << std::endl;
-  return s.c_str();
-}
 double get_total(CreditModel *m) { return m->getTotal(); }
 double get_overpayment(CreditModel *m) { return m->getOverpayment(); }
+double get_first_payment(CreditModel *m) { return m->getFirstPayment(); }
+double get_last_payment(CreditModel *m) { return m->getLastPayment(); }
 }  // namespace s21
