@@ -70,6 +70,14 @@ class Model:
         self._every_month_payment: str = ''
         self._overpayment: float = 0
         self._total: float = 0
+        self._history: list[str] = []
+        try:
+            with open('.history', 'r') as f:
+                for line in f:
+                    self._history.append(line.strip())
+        except FileNotFoundError:
+            pass
+        self._history_index: int = len(self._history)
 
     def __del__(self) -> None:
         lib.model_del(self._model)
@@ -78,6 +86,8 @@ class Model:
     def calc(self) -> str:
         lib.set_x(self._model, self._x)
         lib.set_string(self._model, self._expression.encode())
+        self._history.append(self._expression)
+        self._history_index = len(self._history)
         res: str = lib.calc(self._model).decode('utf-8')
         return res
 
@@ -148,3 +158,24 @@ class Model:
     @property
     def total(self) -> float:
         return self._total
+
+    @property
+    def history_prev(self) -> str:
+        if self._history_index > 0:
+            self._history_index -= 1
+            return self._history[self._history_index]
+
+    @property
+    def history_next(self) -> str:
+        if self._history_index < len(self._history) - 1:
+            self._history_index += 1
+            return self._history[self._history_index]
+
+    def history_clear(self) -> None:
+        self._history = []
+        self._history_index = 0
+
+    def save_history(self) -> None:
+        with open('.history', 'w') as f:
+            for line in self._history:
+                f.write(line + '\n')

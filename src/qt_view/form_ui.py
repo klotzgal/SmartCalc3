@@ -46,6 +46,7 @@ from PySide6.QtWidgets import (
     QFrame,
     QGridLayout,
     QHBoxLayout,
+    QLabel,
     QLineEdit,
     QMainWindow,
     QMenuBar,
@@ -61,19 +62,20 @@ class Ui_View(object):
     def setupUi(self, View):
         if not View.objectName():
             View.setObjectName('View')
-        View.resize(600, 500)
+        View.resize(600, 555)
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(View.sizePolicy().hasHeightForWidth())
         View.setSizePolicy(sizePolicy)
-        View.setMinimumSize(QSize(600, 500))
-        View.setMaximumSize(QSize(600, 500))
+        View.setMinimumSize(QSize(600, 555))
+        View.setMaximumSize(QSize(600, 555))
         View.setStyleSheet(
             '* {\n'
             '	background-color: #1c1c1e; /* \u0422\u0435\u043c\u043d\u043e-\u0441\u0435\u0440\u044b\u0439, \u0431\u043b\u0438\u0436\u0435 \u043a \u0447\u0435\u0440\u043d\u043e\u043c\u0443 */\n'
             '	color: #e5e5e5; /* \u0421\u0432\u0435\u0442\u043b\u043e-\u0441\u0435\u0440\u044b\u0439 \u0434\u043b\u044f \u0442\u0435\u043a\u0441\u0442\u0430 */\n'
             "	font-family: 'Open Sans';\n"
+            '	font: bold 14px;\n'
             '}\n'
             '\n'
             'QPushButton {\n'
@@ -86,8 +88,8 @@ class Ui_View(object):
             '    padding: 6px;\n'
             '}\n'
             'QPushButton:hover {\n'
-            '	background-color: #567890; /* \u041d\u0430\u0441\u044b\u0449\u0435\u043d\u043d\u044b\u0439 \u0441\u0438\u043d\u0438\u0439 \u043f\u0440\u0438 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u0438\u0438 */\n'
-            ''
+            '	background-color: #567890; /* \u041d\u0430\u0441\u044b\u0449\u0435\u043d\u043d\u044b\u0439 \u0441\u0438\u043d\u0438\u0439 \u043f\u0440\u0438 \u043d\u0430\u0432\u0435\u0434\u0435\u043d'
+            '\u0438\u0438 */\n'
             '    border-style: inset;\n'
             '}\n'
             'QPushButton:pressed {\n'
@@ -100,7 +102,6 @@ class Ui_View(object):
             '    border-width: 2px;\n'
             '    border-radius: 10px;\n'
             '    border-color: #708090; /* \u0421\u0442\u0430\u043b\u044c\u043d\u043e\u0439 \u0441\u0435\u0440\u044b\u0439 */\n'
-            '    font: bold 14px;\n'
             '    padding: 6px;\n'
             '}\n'
             '\n'
@@ -110,8 +111,8 @@ class Ui_View(object):
             '    border-style: outset;\n'
             '    border-width: 2px;\n'
             '    border-radius: 10px;\n'
-            '    border-color: #dcdcdc; /* \u0421\u0432\u0435\u0442\u043b\u043e-\u0441\u0435'
-            '\u0440\u044b\u0439 */\n'
+            '    border-color: #dcdcdc; /* \u0421\u0432\u0435\u0442\u043b\u043e-\u0441\u0435\u0440'
+            '\u044b\u0439 */\n'
             '    font: bold 14px;\n'
             '    padding: 6px;\n'
             '}\n'
@@ -147,6 +148,53 @@ class Ui_View(object):
         self.input.setAlignment(Qt.AlignRight | Qt.AlignTrailing | Qt.AlignVCenter)
 
         self.verticalLayout.addWidget(self.input)
+
+        self.frame_3 = QFrame(self.centralwidget)
+        self.frame_3.setObjectName('frame_3')
+        self.frame_3.setFrameShape(QFrame.StyledPanel)
+        self.frame_3.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_2 = QHBoxLayout(self.frame_3)
+        self.horizontalLayout_2.setObjectName('horizontalLayout_2')
+        self.history_prev = QPushButton(self.frame_3)
+        self.history_prev.setObjectName('history_prev')
+        sizePolicy.setHeightForWidth(self.history_prev.sizePolicy().hasHeightForWidth())
+        self.history_prev.setSizePolicy(sizePolicy)
+        self.history_prev.setMinimumSize(QSize(60, 60))
+        self.history_prev.setMaximumSize(QSize(60, 60))
+        self.history_prev.setStyleSheet('')
+
+        self.horizontalLayout_2.addWidget(self.history_prev)
+
+        self.history_next = QPushButton(self.frame_3)
+        self.history_next.setObjectName('history_next')
+        sizePolicy.setHeightForWidth(self.history_next.sizePolicy().hasHeightForWidth())
+        self.history_next.setSizePolicy(sizePolicy)
+        self.history_next.setMinimumSize(QSize(60, 60))
+        self.history_next.setMaximumSize(QSize(60, 60))
+        self.history_next.setStyleSheet('')
+
+        self.horizontalLayout_2.addWidget(self.history_next)
+
+        self.history_clear = QPushButton(self.frame_3)
+        self.history_clear.setObjectName('history_clear')
+        sizePolicy.setHeightForWidth(
+            self.history_clear.sizePolicy().hasHeightForWidth()
+        )
+        self.history_clear.setSizePolicy(sizePolicy)
+        self.history_clear.setMinimumSize(QSize(60, 60))
+        self.history_clear.setMaximumSize(QSize(60, 60))
+        self.history_clear.setStyleSheet('')
+
+        self.horizontalLayout_2.addWidget(self.history_clear)
+
+        self.label = QLabel(self.frame_3)
+        self.label.setObjectName('label')
+        self.label.setLayoutDirection(Qt.LeftToRight)
+        self.label.setAlignment(Qt.AlignLeading | Qt.AlignLeft | Qt.AlignVCenter)
+
+        self.horizontalLayout_2.addWidget(self.label)
+
+        self.verticalLayout.addWidget(self.frame_3)
 
         self.frame = QFrame(self.centralwidget)
         self.frame.setObjectName('frame')
@@ -570,7 +618,7 @@ class Ui_View(object):
         View.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(View)
         self.menubar.setObjectName('menubar')
-        self.menubar.setGeometry(QRect(0, 0, 600, 22))
+        self.menubar.setGeometry(QRect(0, 0, 600, 25))
         View.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(View)
         self.statusbar.setObjectName('statusbar')
@@ -585,6 +633,10 @@ class Ui_View(object):
     def retranslateUi(self, View):
         View.setWindowTitle(QCoreApplication.translate('View', 'View', None))
         self.input.setText(QCoreApplication.translate('View', '0', None))
+        self.history_prev.setText(QCoreApplication.translate('View', '<', None))
+        self.history_next.setText(QCoreApplication.translate('View', '>', None))
+        self.history_clear.setText(QCoreApplication.translate('View', 'Clear', None))
+        self.label.setText(QCoreApplication.translate('View', 'History', None))
         self.button_c.setText(QCoreApplication.translate('View', 'C', None))
         self.button_3.setText(QCoreApplication.translate('View', '3', None))
         self.button_8.setText(QCoreApplication.translate('View', '8', None))

@@ -61,3 +61,6 @@ dist
 *.log
 test
 .DS_Store
+.history
+*.spec
+*tar.gz

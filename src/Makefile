@@ -1,4 +1,4 @@
-.PHONY: all install uninstall clean dvi dist tests format check build
+.PHONY: all install uninstall clean fclean dvi dist tests format check build
 PYTHON=python3.12
 VENV=.venv
 PYEXEC=poetry run
@@ -13,10 +13,13 @@ else ifeq ($(OS), Linux)
 	FLAGS_PLATFORM =-lgtest -lrt -lm -lpthread
 endif
 
-all: run
+all: install
 
 clean:
-	rm -rf main test build
+	rm -rf main test build *.spec 
+
+fclean: clean
+	rm -rf __pycache__ qt_view/__pycache__ .pytest_cache .ruff_cache dist dist.tar.gz
 
 build:
 ifeq ("", "$(wildcard build/obj/)")
@@ -34,17 +37,15 @@ else ifeq ($(OS), Linux)
 endif
 
 install: build
-	$(PYEXEC) pyinstaller --onefile --windowed view.py
-	./dist/mainwindow
+	$(PYEXEC) pyinstaller --onefile --windowed --name=SmartCalc main.py
 
 uninstall:
 	rm -r dist
 
 dvi:
-# TODO: Добавить документацию
 	open README.md
 
-dist:
+dist: install
 	tar -czf dist.tar.gz dist
 
 format:
@@ -63,5 +64,5 @@ venv:
 	$(PYTHON) -m poetry env use $(PYTHON)
 	$(PYTHON) -m poetry install
 
-run:
+run: build
 	$(PYEXEC) python main.py

@@ -73,6 +73,9 @@ class View(IView, QMainWindow):
 
     def set_presenter(self, presenter: Any) -> None:
         self.presenter = presenter
+        self.ui.history_prev.clicked.connect(self.presenter.history_prev)
+        self.ui.history_next.clicked.connect(self.presenter.history_next)
+        self.ui.history_clear.clicked.connect(self.presenter.history_clear)
 
     def show_plot(
         self,

@@ -60,7 +60,52 @@ class Ui_Credit(object):
     def setupUi(self, Credit):
         if not Credit.objectName():
             Credit.setObjectName('Credit')
-        Credit.resize(651, 371)
+        Credit.resize(706, 371)
+        Credit.setMinimumSize(QSize(706, 371))
+        Credit.setMaximumSize(QSize(706, 371))
+        Credit.setStyleSheet(
+            '* {\n'
+            '	background-color: #1c1c1e; /* \u0422\u0435\u043c\u043d\u043e-\u0441\u0435\u0440\u044b\u0439, \u0431\u043b\u0438\u0436\u0435 \u043a \u0447\u0435\u0440\u043d\u043e\u043c\u0443 */\n'
+            '	color: #e5e5e5; /* \u0421\u0432\u0435\u0442\u043b\u043e-\u0441\u0435\u0440\u044b\u0439 \u0434\u043b\u044f \u0442\u0435\u043a\u0441\u0442\u0430 */\n'
+            "	font-family: 'Open Sans';\n"
+            '}\n'
+            '\n'
+            'QPushButton {\n'
+            '	background-color: #445566; /* \u0413\u043b\u0443\u0431\u043e\u043a\u0438\u0439 \u0441\u0438\u043d\u0435-\u0441\u0435\u0440\u044b\u0439 */\n'
+            '    border-style: outset;\n'
+            '    border-width: 2px;\n'
+            '    border-radius: 10px;\n'
+            '    border-color: #708090; /* \u0421\u0442\u0430\u043b\u044c\u043d\u043e\u0439 \u0441\u0435\u0440\u044b\u0439 */\n'
+            '    font: bold 14px;\n'
+            '    padding: 6px;\n'
+            '}\n'
+            'QPushButton:hover {\n'
+            '	background-color: #567890; /* \u041d\u0430\u0441\u044b\u0449\u0435\u043d\u043d\u044b\u0439 \u0441\u0438\u043d\u0438\u0439 \u043f\u0440\u0438 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u0438\u0438 */\n'
+            ''
+            '    border-style: inset;\n'
+            '}\n'
+            'QPushButton:pressed {\n'
+            '	background-color: #2a3b4c; /* \u0411\u043e\u043b\u0435\u0435 \u0442\u0435\u043c\u043d\u044b\u0439 \u0441\u0438\u043d\u0438\u0439 \u043f\u0440\u0438 \u043d\u0430\u0436\u0430\u0442\u0438\u0438 */\n'
+            '    border-style: inset;\n'
+            '}\n'
+            '\n'
+            'QLineEdit{\n'
+            '	border-style: outset;\n'
+            '    border-width: 2px;\n'
+            '    border-radius: 10px;\n'
+            '    border-color: #708090; /* \u0421\u0442\u0430\u043b\u044c\u043d\u043e\u0439 \u0441\u0435\u0440\u044b\u0439 */\n'
+            '    font: bold 14px;\n'
+            '    padding: 6px;\n'
+            '}\n'
+            '#every_month_payment, #total, #overpayment{\n'
+            '	border-style: outset;\n'
+            '    border-width: 2px;\n'
+            '    border-radius: 10px;\n'
+            '    border-color: #708090; /* \u0421\u0442\u0430\u043b\u044c\u043d\u043e\u0439 \u0441\u0435\u0440\u044b\u0439 */\n'
+            '    font: bold 14px;\n'
+            '    padding: 6px;\n'
+            '}'
+        )
         self.verticalLayout_2 = QVBoxLayout(Credit)
         self.verticalLayout_2.setObjectName('verticalLayout_2')
         self.frame_2 = QFrame(Credit)
@@ -163,6 +208,13 @@ class Ui_Credit(object):
 
         self.groupBox_2 = QGroupBox(self.frame_2)
         self.groupBox_2.setObjectName('groupBox_2')
+        sizePolicy1 = QSizePolicy(
+            QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred
+        )
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.groupBox_2.sizePolicy().hasHeightForWidth())
+        self.groupBox_2.setSizePolicy(sizePolicy1)
         self.gridLayout = QGridLayout(self.groupBox_2)
         self.gridLayout.setObjectName('gridLayout')
         self.label_every_month_payment = QLabel(self.groupBox_2)
@@ -226,11 +278,11 @@ class Ui_Credit(object):
         self.horizontalLayout_2.setObjectName('horizontalLayout_2')
         self.button_calc = QPushButton(self.frame_3)
         self.button_calc.setObjectName('button_calc')
-        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.button_calc.sizePolicy().hasHeightForWidth())
-        self.button_calc.setSizePolicy(sizePolicy1)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.button_calc.sizePolicy().hasHeightForWidth())
+        self.button_calc.setSizePolicy(sizePolicy2)
         self.button_calc.setMinimumSize(QSize(0, 60))
         self.button_calc.setMaximumSize(QSize(9999, 60))
         self.button_calc.setStyleSheet('')
@@ -239,8 +291,8 @@ class Ui_Credit(object):
 
         self.button_back = QPushButton(self.frame_3)
         self.button_back.setObjectName('button_back')
-        sizePolicy1.setHeightForWidth(self.button_back.sizePolicy().hasHeightForWidth())
-        self.button_back.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.button_back.sizePolicy().hasHeightForWidth())
+        self.button_back.setSizePolicy(sizePolicy2)
         self.button_back.setMinimumSize(QSize(0, 60))
         self.button_back.setMaximumSize(QSize(9999, 60))
         self.button_back.setStyleSheet('')
@@ -280,6 +332,7 @@ class Ui_Credit(object):
                 None,
             )
         )
+        self.line_edit_summ.setText(QCoreApplication.translate('Credit', '0', None))
         self.label_summ.setText(
             QCoreApplication.translate(
                 'Credit',
@@ -296,6 +349,7 @@ class Ui_Credit(object):
                 None,
             )
         )
+        self.line_edit_mounth.setText(QCoreApplication.translate('Credit', '0', None))
         self.label_type.setText(
             QCoreApplication.translate(
                 'Credit',
@@ -304,6 +358,7 @@ class Ui_Credit(object):
                 None,
             )
         )
+        self.line_edit_percent.setText(QCoreApplication.translate('Credit', '0', None))
         self.groupBox_2.setTitle('')
         self.label_every_month_payment.setText(
             QCoreApplication.translate(

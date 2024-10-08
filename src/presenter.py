@@ -32,3 +32,16 @@ class Presenter:
             self.model.total,
             self.model.overpayment,
         )
+
+    def history_prev(self) -> None:
+        value = self.model.history_prev
+        if value:
+            self.view.input = value
+
+    def history_next(self) -> None:
+        value = self.model.history_next
+        if value:
+            self.view.input = value
+
+    def history_clear(self) -> None:
+        self.model.history_clear()
