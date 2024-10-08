@@ -34,7 +34,24 @@ def import_cpp() -> ctypes.CDLL:
     lib.get_pyi.argtypes = [ctypes.c_void_p, ctypes.c_int]
     lib.len_py.restype = ctypes.c_int
     lib.len_py.argtypes = [ctypes.c_void_p]
-
+    lib.credit_model_new.restype = ctypes.c_void_p
+    lib.credit_model_del.argtypes = [ctypes.c_void_p]
+    lib.credit_calc.restype = ctypes.c_char_p
+    lib.credit_calc.argtypes = [
+        ctypes.c_void_p,
+        ctypes.c_double,
+        ctypes.c_double,
+        ctypes.c_double,
+        ctypes.c_bool,
+    ]
+    lib.get_first_payment.restype = ctypes.c_double
+    lib.get_first_payment.argtypes = [ctypes.c_void_p]
+    lib.get_last_payment.restype = ctypes.c_double
+    lib.get_last_payment.argtypes = [ctypes.c_void_p]
+    lib.get_overpayment.restype = ctypes.c_double
+    lib.get_overpayment.argtypes = [ctypes.c_void_p]
+    lib.get_total.restype = ctypes.c_double
+    lib.get_total.argtypes = [ctypes.c_void_p]
     return lib
 
 
@@ -44,23 +61,39 @@ lib: ctypes.CDLL = import_cpp()
 class Model:
     def __init__(self) -> None:
         self._model = lib.model_new()
+        self._credit_model = lib.credit_model_new()
         self._expression: str = ''
         self._x: float = 0
         self._plot: Graphic = Graphic
         self._px: list[float] = []
         self._py: list[float] = []
+        self._every_month_payment: str = ''
+        self._overpayment: float = 0
+        self._total: float = 0
 
     def __del__(self) -> None:
         lib.model_del(self._model)
+        lib.credit_model_del(self._credit_model)
 
     def calc(self) -> str:
-        print('|', self._expression, '|= ', end='')
         lib.set_x(self._model, self._x)
         lib.set_string(self._model, self._expression.encode())
         res: str = lib.calc(self._model).decode('utf-8')
         return res
 
+    def credit_calc(self, S: float, n: float, p: float, annuity: bool = True) -> None:
+        lib.credit_calc(self._credit_model, S, n, p, annuity)
+        self._overpayment = round(lib.get_overpayment(self._credit_model), 2)
+        self._every_month_payment = str(
+            round(lib.get_first_payment(self._credit_model), 2)
+        )
+        last = lib.get_last_payment(self._credit_model)
+        if last != -1:
+            self._every_month_payment += '\n' + str(round(last, 2))
+        self._total = round(lib.get_total(self._credit_model), 2)
+
     def plot(self, autoscale: bool = False, limit: float = 10) -> None:
+        lib.set_string(self._model, self._expression.encode())
         lib.plot(self._model, autoscale, limit)
         self._update_plot_info()
 
@@ -103,3 +136,15 @@ class Model:
         if self._py == []:
             self._update_plot_info()
         return self._py
+
+    @property
+    def every_month_payment(self) -> str:
+        return self._every_month_payment
+
+    @property
+    def overpayment(self) -> float:
+        return self._overpayment
+
+    @property
+    def total(self) -> float:
+        return self._total

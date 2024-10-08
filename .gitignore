@@ -60,3 +60,4 @@ dist
 .coverage
 *.log
 test
+.DS_Store

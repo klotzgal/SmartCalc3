@@ -9,6 +9,7 @@ namespace s21 {
  *
  */
 void Model::S21Calc() {
+  setlocale(LC_NUMERIC, "C");
   std::stack<double> stack_d;
   std::stack<Operator> stack_c;
   last_token_ = cur_token_ = 'n';
@@ -456,9 +457,9 @@ void Model::UnaryOperations(std::stack<double> &stack_d,
  * Граница x
  */
 void Model::Plot(bool autoscale, double limit) {
-  double h = limit / 15;
+  double h = 0.1;
   double xBegin = -limit;
-  double xEnd = limit + h;
+  double xEnd = limit;
   Px_.clear();
   Py_.clear();
   graphic_.yMin = limit;
@@ -492,6 +493,11 @@ void Model::Plot(bool autoscale, double limit) {
     if (graphic_.yMax > yMean + limit) graphic_.yMax = yMean + limit;
     if (graphic_.xMin < xMean - limit) graphic_.xMin = xMean - limit;
     if (graphic_.xMax > xMean + limit) graphic_.xMax = xMean + limit;
+  } else {
+    graphic_.yMin = -limit;
+    graphic_.yMax = limit;
+    graphic_.xMin = -limit;
+    graphic_.xMax = limit;
   }
 }
 

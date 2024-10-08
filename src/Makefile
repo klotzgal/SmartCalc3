@@ -26,7 +26,12 @@ ifeq ("", "$(wildcard .venv/)")
 	make venv
 endif
 	$(CC) -c -fPIC lib/model.cc -Wextra -Wall -o $(OBJ_DIR)/model.o
-	$(CC) -shared -Wl,-soname,model.so -o $(OBJ_DIR)/model.so $(OBJ_DIR)/model.o 
+	$(CC) -c -fPIC lib/credit_model.cc -Wextra -Wall -o $(OBJ_DIR)/credit_model.o
+ifeq ($(OS), Darwin)
+	$(CC) -shared -Wl,-install_name,model.so -o $(OBJ_DIR)/model.so $(OBJ_DIR)/model.o $(OBJ_DIR)/credit_model.o
+else ifeq ($(OS), Linux)
+	$(CC) -shared -Wl,-soname,model.so -o $(OBJ_DIR)/model.so $(OBJ_DIR)/model.o $(OBJ_DIR)/credit_model.o
+endif
 
 install: build
 	$(PYEXEC) pyinstaller --onefile --windowed view.py
@@ -53,15 +58,10 @@ tests: build
 	$(CC) tests/test.cc -Wl,-rpath,$(OBJ_DIR) $(OBJ_DIR)/model.so -o dist/test $(FLAGS_PLATFORM) $(FLAGS)
 	./dist/test
 
-# cov:
-# 	$(PYEXEC) pytest --cov --cov-report=html #-W ignore::DeprecationWarning
-# 	open htmlcov/index.html
-
-
 venv:
-	poetry env use $(PYTHON)
-	poetry config --local virtualenvs.in-project true
-	poetry install
+	# $(PYTHON) -m poetry config --local virtualenvs.in-project true
+	$(PYTHON) -m poetry env use $(PYTHON)
+	$(PYTHON) -m poetry install
 
 run:
-	$(PYEXEC) python view.py
+	$(PYEXEC) python main.py
