@@ -37,10 +37,11 @@ else ifeq ($(OS), Linux)
 endif
 
 install: build
-	$(PYEXEC) pyinstaller --onefile --windowed --name=SmartCalc main.py
+	$(PYEXEC) pyinstaller SmartCalc.spec #--onefile -w -n SmartCalc main.py
+	# ln -fs dist/SmartCalc ~/Desktop/SmartCalc
 
 uninstall:
-	rm -r dist
+	rm -rf dist ~/Desktop/SmartCalc
 
 dvi:
 	open README.md

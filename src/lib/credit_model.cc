@@ -29,8 +29,6 @@ void CreditModel::S21Calc(const double S, const double n, double p,
     overpayment_ = result - S;
     total_ = result;
   }
-  std::cout << "Платежи " << first_payment_ << " и " << last_payment_
-            << std::endl;
 }
 
 CreditModel *credit_model_new() { return new CreditModel(); }

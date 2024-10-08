@@ -119,7 +119,7 @@ class View(IView, QMainWindow):
         self.ui.button_equal.setChecked(True)
 
     def _button_plot_slot(self) -> None:
-        self.graphic_window.plot.expression = str(self.ui.input.text())
+        self.graphic_window.plot.expression = 'y=' + str(self.ui.input.text())
         self.presenter.plot(self.graphic_window.ui.autoscale.isChecked(), self._limit)
         self.graphic_window.show()
         self.close()
