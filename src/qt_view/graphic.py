@@ -77,7 +77,7 @@ class PlotCanvas(FigureCanvas):
         self.axes.clear()
         self.axes.set_xlim(x_min, x_max)
         self.axes.set_ylim(y_min, y_max)
-        self.axes.plot(x_data, y_data, color='#567890', linestyle='-', linewidth=2)
+        self.axes.scatter(x_data, y_data, s=1, color='#567890')
         self.axes.set_title(
             self.expression, color=self.text_color, fontname='Open Sans'
         )

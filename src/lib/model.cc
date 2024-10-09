@@ -457,7 +457,7 @@ void Model::UnaryOperations(std::stack<double> &stack_d,
  * Граница x
  */
 void Model::Plot(bool autoscale, double limit) {
-  double h = 0.1;
+  double h = 0.01;
   double xBegin = -limit;
   double xEnd = limit;
   Px_.clear();

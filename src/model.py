@@ -21,6 +21,7 @@ def import_cpp() -> ctypes.CDLL:
     lib.model_new.restype = ctypes.c_void_p
     lib.set_string.argtypes = [ctypes.c_void_p, ctypes.c_char_p]
     lib.calc.restype = ctypes.c_char_p
+    lib.calc.argtypes = [ctypes.c_void_p]
     lib.model_del.argtypes = [ctypes.c_void_p]
     lib.set_x.argtypes = [ctypes.c_void_p, ctypes.c_double]
     lib.plot.argtypes = [ctypes.c_void_p, ctypes.c_bool, ctypes.c_double]

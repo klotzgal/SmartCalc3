@@ -61,7 +61,7 @@ tests: build
 	./dist/test
 
 venv:
-	# $(PYTHON) -m poetry config --local virtualenvs.in-project true
+	$(PYTHON) -m poetry config --local virtualenvs.in-project true
 	$(PYTHON) -m poetry env use $(PYTHON)
 	$(PYTHON) -m poetry install
 
