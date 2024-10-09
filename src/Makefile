@@ -16,10 +16,10 @@ endif
 all: install
 
 clean:
-	rm -rf main test build *.spec 
+	rm -rf main test build
 
-fclean: clean
-	rm -rf __pycache__ qt_view/__pycache__ .pytest_cache .ruff_cache dist dist.tar.gz
+fclean: clean uninstall
+	rm -rf __pycache__ qt_view/__pycache__ .pytest_cache .ruff_cache dist.tar.gz
 
 build:
 ifeq ("", "$(wildcard build/obj/)")
@@ -37,8 +37,8 @@ else ifeq ($(OS), Linux)
 endif
 
 install: build
-	$(PYEXEC) pyinstaller SmartCalc.spec #--onefile -w -n SmartCalc main.py
-	# ln -fs dist/SmartCalc ~/Desktop/SmartCalc
+	$(PYEXEC) pyinstaller SmartCalc.spec
+	ln -fs $(pwd)/dist/SmartCalc ~/Desktop/SmartCalc
 
 uninstall:
 	rm -rf dist ~/Desktop/SmartCalc
