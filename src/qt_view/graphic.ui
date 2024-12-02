@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Graphic</class>
+ <widget class="QWidget" name="Graphic">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>538</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>600</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>600</width>
+    <height>624</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">* {
+	background-color: #1c1c1e; /* Темно-серый, ближе к черному */
+	color: #e5e5e5; /* Светло-серый для текста */
+	font-family: 'Open Sans';
+    font: bold 14px;
+}
+
+QPushButton {
+	background-color: #445566; /* Глубокий сине-серый */
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: #708090; /* Стальной серый */
+    padding: 6px;
+}
+QPushButton:hover {
+	background-color: #567890; /* Насыщенный синий при наведении */
+    border-style: inset;
+}
+QPushButton:pressed {
+	background-color: #2a3b4c; /* Более темный синий при нажатии */
+    border-style: inset;
+}
+
+QLineEdit {
+	border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: #708090; /* Стальной серый */
+    font: bold 14px;
+    padding: 6px;
+}
+
+/* Стили для QSlider */
+QSlider::groove:horizontal {
+    border: 1px solid #708090; /* Стальной серый */
+    height: 8px;
+    background: #445566; /* Глубокий сине-серый */
+    margin: 2px 0;
+    border-radius: 4px;
+}
+QSlider::handle:horizontal {
+    background: #567890; /* Насыщенный синий */
+    border: 1px solid #708090; /* Стальной серый */
+    width: 20px;
+    height: 20px;
+    margin: -8px 0; /* Центрируем ползунок */
+    border-radius: 10px;
+}
+QSlider::handle:horizontal:hover {
+    background: #89abcd; /* Более яркий синий при наведении */
+}
+QSlider::sub-page:horizontal {
+    background: #567890; /* Насыщенный синий для заполненной области */
+}
+QSlider::add-page:horizontal {
+    background: #2a3b4c; /* Более темная область после ползунка */
+}
+
+/* Стили для QCheckBox */
+QCheckBox {
+    spacing: 8px;
+    font: bold 14px;
+    color: #e5e5e5; /* Светло-серый для текста */
+}
+QCheckBox::indicator {
+    width: 18px;
+    height: 18px;
+}
+QCheckBox::indicator:unchecked {
+    border: 2px solid #708090; /* Стальной серый контур */
+    background-color: #1c1c1e; /* Темный фон */
+    border-radius: 4px;
+}
+QCheckBox::indicator:checked {
+    border: 2px solid #567890; /* Насыщенный синий */
+    background-color: #567890; /* Синий при выборе */
+    border-radius: 4px;
+}
+QCheckBox::indicator:unchecked:hover {
+    border-color: #89abcd; /* Яркий синий при наведении */
+}
+QCheckBox::indicator:checked:hover {
+    background-color: #89abcd; /* Яркий синий при наведении на выбранный */
+}
+
+/* Стили для QSpinBox */
+QSpinBox {
+    background-color: #1c1c1e; /* Темный фон */
+    border: 2px solid #708090; /* Стальной серый контур */
+    border-radius: 10px;
+    padding: 6px;
+    color: #e5e5e5; /* Светло-серый текст */
+    font: bold 14px;
+}
+QSpinBox::up-button {
+    background-color: #445566; /* Глубокий сине-серый */
+    border: 1px solid #708090;
+    border-radius: 5px;
+    width: 16px;
+    height: 12px;
+}
+QSpinBox::down-button {
+    background-color: #445566; /* Глубокий сине-серый */
+    border: 1px solid #708090;
+    border-radius: 5px;
+    width: 16px;
+    height: 12px;
+}
+QSpinBox::up-button:hover, QSpinBox::down-button:hover {
+    background-color: #567890; /* Насыщенный синий при наведении */
+}
+QSpinBox::up-button:pressed, QSpinBox::down-button:pressed {
+    background-color: #2a3b4c; /* Более темный синий при нажатии */
+}
+QSpinBox::up-arrow, QSpinBox::down-arrow {
+    width: 8px;
+    height: 8px;
+    color: #e5e5e5; /* Светло-серый цвет стрелок */
+}
+</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_3">
+   <item>
+    <widget class="QFrame" name="frame_2">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QWidget" name="plot" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="frame">
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QWidget" name="widget_2" native="true">
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QSlider" name="slider">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>1000</number>
+              </property>
+              <property name="singleStep">
+               <number>10</number>
+              </property>
+              <property name="value">
+               <number>10</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="tickPosition">
+               <enum>QSlider::NoTicks</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="autoscale">
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="text">
+            <string>Autoscale</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="widget" native="true">
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>9</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>9</number>
+            </property>
+            <item>
+             <widget class="QSpinBox" name="limit">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>60</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="minimum">
+               <number>-1000000</number>
+              </property>
+              <property name="maximum">
+               <number>1000000</number>
+              </property>
+              <property name="singleStep">
+               <number>1</number>
+              </property>
+              <property name="value">
+               <number>10</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_x_max">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Range</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="button_back">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>9999</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string>Back</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

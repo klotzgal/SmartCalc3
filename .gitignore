@@ -49,3 +49,17 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+
+# My
+*venv
+.vscode
+*cache*
+build
+dist
+.coverage
+*.log
+test
+.DS_Store
+.history
+*tar.gz

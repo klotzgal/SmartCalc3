@@ -1,0 +1,9 @@
+{
+    "files": [
+        "../view.py",
+        "../main.py",
+        "form.ui",
+        "graphic.ui",
+        "credit.ui"
+    ]
+}

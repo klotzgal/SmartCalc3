@@ -1,0 +1,42 @@
+[tool.poetry]
+package-mode = false
+name = "SmartCalc"
+version = "0.3.0"
+description = ""
+authors = ["klotzgal <ggg44466635@gmail.com>"]
+readme = "../README.md"
+packages = [{include = "src"}]
+
+[virtualenvs]
+in-project = true
+
+[tool.poetry.dependencies]
+python = "<3.13,>=3.9"
+pyside6 = "^6.7.2"
+matplotlib = "^3.9.2"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.5.1"
+mypy = "^1.10.1"
+isort = "^5.13.2"
+pyinstaller = "^6.10.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.ruff.lint.per-file-ignores]
+"qt_view/*ui*.py" = ["F"]
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[tool.pytest]
+pythonpath = "src"
+python_files = "test_*.py"
+testpaths = ["src/tests"]
+log_cli = true
+log_cli_level = "INFO"
