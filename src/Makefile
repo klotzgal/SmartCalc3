@@ -44,7 +44,7 @@ uninstall:
 	rm -rf dist ~/Desktop/SmartCalc
 
 dvi:
-	open README.md
+	open ../README.md
 
 dist: install
 	tar -czf dist.tar.gz dist
